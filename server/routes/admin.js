@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const adminController = require("../controllers/userController");
+const adminController = require("../controllers/adminController");
 const { verify, verifyAdmin } = require("../auth");
 
 // Admin-only endpoints

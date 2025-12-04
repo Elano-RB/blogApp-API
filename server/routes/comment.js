@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const commentController = require("../controllers/userController");
+const commentController = require("../controllers/commentController");
 const { verify } = require("../auth");
 
 // view comments in a post (public)

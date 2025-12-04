@@ -20,8 +20,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-const adminRoutes = require("./routes/admin");
 const userRoutes = require("./routes/user");
+const adminRoutes = require("./routes/admin");
 const commentRoutes = require("./routes/comment");
 const postRoutes = require("./routes/post");
 

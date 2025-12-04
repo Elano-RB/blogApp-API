@@ -2,27 +2,37 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const { createAccessToken } = require("../auth");
 
-module.exports.register = async (req, res) => {
-    try {
-        const { email, password } = req.body;
+module.exports.register = (req, res) => {
 
-        if (!email || !password)
-            return res.status(400).send({ message: "Email and password required" });
+    
+    if(!req.body.email.includes('@')){
 
-        const existing = await User.findOne({ email });
-        if (existing)
-            return res.status(409).send({ message: "Email already registered" });
+        return res.status(400).send({ message: 'Invalid email format' });
 
-        const hashed = await bcrypt.hash(password, 10);
+    } else if (req.body.password.length < 8) {
 
-        await User.create({ email, password: hashed });
+        return res.status(400).send({ message: 'Password must be atleast 8 characters long' });
 
-        return res.status(201).send({ message: "Registered Successfully" });
+    } else { 
 
-    } catch (err) {
-        return res.status(500).send({ message: err.message });
+        let newUser = new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10)
+        })
+
+        return newUser.save()
+
+        .then((result) => res.status(201).send({
+            message: 'User registered successfully',
+            user: result
+        }))
+
+        .catch(error => errorHandler(error, req, res))
+        
     }
-};
+}
 
 module.exports.login = async (req, res) => {
     try {

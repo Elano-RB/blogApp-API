@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const postController = require("../controllers/userController");
+const postController = require("../controllers/postController");
 const { verify } = require("../auth");
 
 
@@ -13,3 +13,5 @@ router.get('/getSingle/:id', postController.getSinglePost);
 router.post('/create', verify, postController.createPost);
 router.put('/update/:id', verify, postController.updatePost);
 router.delete('/delete-post/:id', verify, postController.deletePost);
+
+module.exports = router;
