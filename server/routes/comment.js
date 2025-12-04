@@ -8,7 +8,7 @@ router.get('/get-comment/:postId', commentController.getCommentsByPost);
 
 
 // add comment
-router.post('/add-comment', verify, commentController.addComment);
+router.post('/add-comment/:postId', verify, commentController.addComment);
 
 
 // delete comment (author or admin)

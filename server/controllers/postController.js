@@ -37,7 +37,7 @@ module.exports.createPost = async (req, res) => {
 module.exports.getAllPosts = async (req, res) => {
     try {
         const posts = await Post.find()
-            .populate("author", "firstName email role")
+            .populate("author", "email role")
             .sort({ createdAt: -1 });
 
         return res.status(200).json(posts);
@@ -73,8 +73,7 @@ module.exports.updatePost = async (req, res) => {
             return res.status(404).json({ error: "Post not found" });
         }
 
-        // allow owner OR admin
-        if (post.author.toString() !== req.user._id && req.user.role !== "admin") {
+        if (post.author.toString() !== req.user.id && req.user.role !== "admin") {
             return res.status(403).json({ error: "Not authorized to update this post" });
         }
 
@@ -99,8 +98,7 @@ module.exports.deletePost = async (req, res) => {
             return res.status(404).json({ error: "Post not found" });
         }
 
-        // Allow owner or admin
-        if (post.author.toString() !== req.user._id && req.user.role !== "admin") {
+        if (post.author.toString() !== req.user.id && req.user.role !== "admin") {
             return res.status(403).json({ error: "Not authorized to delete this post" });
         }
 
