@@ -1,0 +1,17 @@
+{
+    "endpoints": {
+        "login": "/users/login",
+        "register": "/users/register",
+        "getUserDetails": "/users/details",
+        "deleteAnyPost": "/admin/posts/id={_id}",
+        "deleteAnyComment": "/admin/comments/:id",
+        "getCommentsByPost": "/comments/get-comment/:postId",
+        "addComment": "/comments/add-comment",
+        "deleteComment": "/comments/all",
+        "getAllPosts": "/posts/getSingle/:id",
+        "getSinglePost": "/posts/completeWorkoutStatus?id={workoutId}",
+        "createPost": "/posts/create",
+        "updatePost": "/posts/update/:id",
+        "deletePost": "/posts/delete-post/:id",
+    }
+}
