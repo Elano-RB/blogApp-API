@@ -40,10 +40,10 @@ Store
 api.js – (Centralized API wrapper)
 
 Other Client Features
--Routing and navigation guards
--Token-based authentication
--Global CSS styling (main.css)
--Vite configuration (vite.config.js)
+- Routing and navigation guards
+- Token-based authentication
+- Global CSS styling (main.css)
+- Vite configuration (vite.config.js)
 
 🖥️ Server (Node + Express + MongoDB)
 
