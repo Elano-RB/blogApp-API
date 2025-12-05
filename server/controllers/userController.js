@@ -48,7 +48,10 @@ module.exports.login = async (req, res) => {
 
         const token = createAccessToken(user);
 
-        return res.status(200).send({ access: token });
+        return res.status(200).send({ 
+            message: 'User logged in successfully',
+            access: token 
+        });
 
     } catch (err) {
         return res.status(500).send({ message: err.message });
@@ -67,4 +70,55 @@ module.exports.getUserDetails = async (req, res) => {
     } catch (err) {
         return res.status(500).send({ message: err.message });
     }
+};
+
+module.exports.updateAdmin = (req, res) => {
+    return User.findById(req.params.id)
+    .then(user => {
+
+        if(user) {
+                
+            if(user.isAdmin) {
+                return  res.status(200).send({ 
+                        message: 'User already admin', 
+                        user: user
+                    })
+            }
+            
+            user.isAdmin = true 
+
+            user.save();
+
+            return res.status(201).send({
+                    success: true,
+                    message: 'User updated as admin successfully'
+                });
+                
+        } else {
+
+            return res.status(404).send({ message: 'User not found' })
+        
+        }
+    })
+    .catch(error => errorHandler(error, req, res));
+
+}
+
+module.exports.updatePassword = async (req, res) => {
+  try {
+    const { newPassword } = req.body;
+    const { id } = req.user; 
+
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+
+    await User.findByIdAndUpdate(id, { password: hashedPassword });
+
+
+    res.status(201).send({ message: 'Password reset successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: 'Internal server error' });
+  }
 };
