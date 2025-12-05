@@ -1,0 +1,32 @@
+#banner-title {
+  font-family: "Trebuchet MS", sans-serif;
+  font-weight: bolder;
+  font-size: 54px;
+}
+
+#motto {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 1.7rem;
+}
+
+#banner {
+  background: url(https://static.vecteezy.com/system/resources/thumbnails/053/116/592/small/right-side-beautiful-arrangement-of-different-books-04-photo.jpg),
+    linear-gradient(to right, rgb(255, 255, 255), 70%, rgba(126, 209, 247, 0.5));
+  background-size: cover;
+  background-position: center;
+  height: 550px;
+}
+
+.custom-link:hover {
+  color: #0d6efd;            /* Bootstrap blue on hover */
+}
+
+.btn-info {
+  background-color: #2da1c7;
+}
+
+#ProductCard {
+
+  width: 100%; 
+  max-width: 20rem;
+}
