@@ -32,7 +32,12 @@ const fetchProfile = async () => {
   try {
     // adjust endpoint to your backend: /users/me or /users/profile or /users/details
     const { data } = await api.get('/users/details')
-    profile.value = data.user
+    profile.value = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      role: data.isAdmin ? 'Admin' : 'User'
+    }
   } catch (err) {
     console.error(err)
     errorMsg.value = 'Failed to load profile. Please re-login.'
