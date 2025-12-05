@@ -8,7 +8,8 @@
 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          <!-- <router-link v-if="user?.isAdmin" class="nav-link custom-link" :to="{ name: 'Products' }">Admin Dashboard</router-link> -->
+          <router-link v-if="user?.isAdmin" class="nav-link custom-link" :to="{ name: 'AdminDashboard' }">Admin Dashboard</router-link>
+
           <router-link v-if="user?.token" class="nav-link custom-link" :to="{ name: 'PostListPage' }">
             Community
           </router-link>

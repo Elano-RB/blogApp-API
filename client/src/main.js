@@ -15,6 +15,7 @@ import PostListPage from './pages/PostListPage.vue'
 import SinglePostPage from './pages/SinglePostPage.vue'
 import CreatePostPage from './pages/CreatePostPage.vue'
 import EditPostPage from './pages/EditPostPage.vue'
+import AdminDashboard from './pages/AdminDashboard.vue'
 // import AdminDashboard from './pages/AdminDashboard.vue';
 
 
@@ -45,22 +46,27 @@ const router = createRouter({
 	  path: "/posts",
 	  name: "PostListPage",
 	  component: PostListPage
-	},
-	{
-	  path: "/posts/:id",
-	  name: "single-post",
-	  component: SinglePostPage
-	},
-	{
-	  path: "/posts/create",
-	  name: "create-post",
-	  component: CreatePostPage
-	},
-	{
-	  path: "/posts/edit/:id",
-	  name: "edit-post",
-	  component: EditPostPage
-	}
+  	},
+  	{
+  	  path: "/posts/:id",
+  	  name: "single-post",
+  	  component: SinglePostPage
+  	},
+  	{
+  	  path: "/posts/create",
+  	  name: "create-post",
+  	  component: CreatePostPage
+  	},
+  	{
+  	  path: "/posts/edit/:id",
+  	  name: "edit-post",
+  	  component: EditPostPage
+  	},
+    {
+      path: '/admin/dashboard',
+      name: 'AdminDashboard',
+      component: AdminDashboard
+    }
     
   ]
 })
@@ -71,7 +77,7 @@ router.beforeEach((to, from, next) => {
 
   // Protect admin-only pages
   if (to.meta.isAdmin && !user?.isAdmin) {
-    return next('/products')
+    return next('/')
   }
 
   next()
