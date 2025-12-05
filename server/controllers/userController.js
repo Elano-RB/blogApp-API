@@ -65,7 +65,13 @@ module.exports.getUserDetails = async (req, res) => {
         if (!user)
             return res.status(404).send({ message: "User not found" });
 
-        return res.status(200).send({ user: user });
+        return res.status(200).send({
+            id: user._id,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            isAdmin: user.isAdmin
+        });
 
     } catch (err) {
         return res.status(500).send({ message: err.message });
