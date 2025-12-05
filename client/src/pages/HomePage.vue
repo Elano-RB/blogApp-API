@@ -14,7 +14,7 @@
 					title: "Connect",
 					tagline: "See what everyone is sharing and join the conversation.",
 					destination: "PostListPage",
-					buttonLabel: "Join the Connect"
+					buttonLabel: "Join the Community"
 				}
 			}
 		}

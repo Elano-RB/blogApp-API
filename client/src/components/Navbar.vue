@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg sticky-top bg-light shadow-sm">
     <div class="container">
-      <router-link :to="{name: 'Home'}" class="navbar-brand custom-link">OurSpace</router-link>
+      <router-link :to="{name: 'Home'}" class="navbar-brand custom-link">CONNECT~</router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,12 +9,11 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
           <!-- <router-link v-if="user?.isAdmin" class="nav-link custom-link" :to="{ name: 'Products' }">Admin Dashboard</router-link> -->
+          <router-link v-if="user?.token" class="nav-link custom-link" :to="{ name: 'PostListPage' }">
+            Community
+          </router-link>
 
           <router-link v-if="user?.token && !user?.isAdmin" class="nav-link custom-link" :to="{ name: 'profile' }">My Profile</router-link>
-
-          <!-- <router-link v-if="user?.email && !user?.isAdmin" class="nav-link custom-link" :to="{ name: 'order' }">My Order</router-link> -->
-
-          <!-- <router-link v-if="user?.token && !user?.isAdmin" class="nav-link custom-link" :to="{ name: 'View Cart' }">View Cart</router-link> -->
           
           <router-link v-if="!user?.token" class="nav-link custom-link" :to="{ name: 'Register' }">Register</router-link>
 

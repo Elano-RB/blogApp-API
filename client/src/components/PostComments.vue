@@ -103,7 +103,7 @@ const deleteComment = async (commentId) => {
             <small class="text-muted"> • {{ new Date(comment.createdAt).toLocaleString() }}</small>
           </div>
           <button
-            v-if="user.token && (user.email === comment.author.email || user.isAdmin)"
+            v-if="user && (user._id === comment.author.id || user.role === 'admin')"
             class="btn btn-sm btn-outline-danger"
             @click="deleteComment(comment._id)"
           >
